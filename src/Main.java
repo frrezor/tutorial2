@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 
 public class Main {
@@ -12,8 +13,15 @@ public class Main {
           System.out.println("Task 2:");
           int [] array2= {3,3,3,3,5,6,3};
           System.out.println( "The dominant is "+ findDominant(array2));
+          System.out.println();
 
-
+          System.out.println("Task 3:");
+          Scanner sc = new Scanner(System.in);
+          int [] array3= {1,2,3,4,5,6,7};
+          System.out.println("Provide a number of positions o rotate");
+          int n = sc.nextInt();
+            int[] result=rotateArray(array3,n);
+            System.out.println(Arrays.toString(result));
 
     }
     //task1
@@ -33,7 +41,7 @@ public class Main {
          }
          return OddArray;
     }
-
+    //task2
     public static int findDominant (int[] arr) {
          int count=0;
          int index=-1;
@@ -56,5 +64,18 @@ public class Main {
                 return -1;
             }
 
+    }
+    //task3
+    public static int [] rotateArray (int [] arr,int n){
+        int a =arr.length;
+        n=n%a;
+        int [] rotatedArray = new int [a];
+         for (int i = 0; i < n; i++) {
+             rotatedArray[i]=arr[a-n+i];
+         }
+        for (int i = n; i < a; i++) {
+            rotatedArray[i] = arr[i-n];
+        }
+       return rotatedArray;
     }
 }
